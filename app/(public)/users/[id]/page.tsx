@@ -23,6 +23,7 @@ if (typeof data === "string") {
     return (
         <div>
             {
+
               obj &&  <>Users Page content {obj.id} {obj.name}</>
             }
             Users Page content {obj.id} {obj.name}
