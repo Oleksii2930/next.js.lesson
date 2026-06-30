@@ -7,10 +7,10 @@ const Menu = () => {
                 <Link href="/"> home</Link>
             </li>
             <li>
-                <Link href="/about"> about</Link>
+                <Link href="/posts"> posts</Link>
             </li>
             <li>
-                <Link href="/contacts"> contacts</Link>
+                <Link href="/comments"> comments</Link>
             </li>
             <li>
                 <Link href="/users"> users</Link>

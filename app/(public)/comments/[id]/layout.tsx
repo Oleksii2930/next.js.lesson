@@ -3,19 +3,18 @@ import {Metadata} from "next";
 
 
 export const metadata: Metadata = {
-    title:'About metadata'
+    title:'CommentsLayout metadata'
 }
 type Props = {children:React.ReactNode}
-const AboutLayout= ({children}: Props) => {
+const CommentsLayout= ({children}: Props) => {
     return (
         <div>
             <hr/>
 
-            about layout
-            {children}
+            Comments Layout {children}
             <hr/>
         </div>
     );
 };
 
-export default AboutLayout;
+export default CommentsLayout;
