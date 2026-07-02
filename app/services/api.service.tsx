@@ -1,9 +1,9 @@
-import {IUser} from "@/app/models/IUser";
+import {ICar} from "@/app/models/ICar";
 
 
-export const getAllUsers = async ():Promise<IUser[]> => {
-  const users =  await fetch('http://jsonplaceholder.typicode.com/users')
+export const getAllCars = async ():Promise<ICar[]> => {
+  const cars =  await fetch('https://bigbird.space/carsAPI/v1')
       .then(value => value.json());
-return users;
+return cars;
 
 }
