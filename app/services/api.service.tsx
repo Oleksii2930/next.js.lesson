@@ -1,9 +1,13 @@
-import {ICar} from "@/app/models/ICar";
+import { ICar } from "@/app/models/ICar";
 
+const BASE_URL = "http://bigbird.space/carsAPI/v1";
 
-export const getAllCars = async ():Promise<ICar[]> => {
-  const cars =  await fetch('https://bigbird.space/carsAPI/v1')
-      .then(value => value.json());
-return cars;
+export const getAllCars = async (): Promise<ICar[]> => {
+  const response = await fetch(`${BASE_URL}`);
 
-}
+  if (!response.ok) {
+    throw new Error("Failed to fetch cars");
+  }
+
+  return response.json();
+};
