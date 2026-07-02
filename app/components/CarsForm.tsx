@@ -1,13 +1,10 @@
 "use client";
 
-import {useForm} from "react-hook-form";
-import {createCar} from "@/app/services/api.service";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
 
-type FormData = {
-    brand: string;
-    price: number;
-    year: number;
-}
+import { createCar } from "@/app/services/api.service";
+import { carSchema, CarFormData } from "@/app/lib/car.schema";
 
 const CarForm = () => {
 
@@ -15,66 +12,61 @@ const CarForm = () => {
         register,
         handleSubmit,
         reset,
-        formState: {errors}
-    } = useForm<FormData>();
+        formState: { errors }
+    } = useForm<CarFormData>({
+        resolver: joiResolver(carSchema),
+    });
 
-
-    const submit = async (data: FormData) => {
+    const submit = async (data: CarFormData) => {
 
         await createCar(data);
 
         alert("Car created!");
 
         reset();
-
-    }
+    };
 
     return (
-
         <form onSubmit={handleSubmit(submit)}>
 
             <div>
-
-                <input placeholder="Brand" {...register("brand", {required: "Brand is required"})}/>
+                <input
+                    placeholder="Brand"
+                    {...register("brand")}
+                />
 
                 <p>{errors.brand?.message}</p>
-
             </div>
 
             <div>
-
                 <input
                     type="number"
                     placeholder="Price"
                     {...register("price", {
-                        required: "Price is required",
                         valueAsNumber: true
                     })}
                 />
 
                 <p>{errors.price?.message}</p>
-
             </div>
 
             <div>
-
                 <input
                     type="number"
                     placeholder="Year"
                     {...register("year", {
-                        required: "Year is required",
                         valueAsNumber: true
                     })}
                 />
 
                 <p>{errors.year?.message}</p>
-
             </div>
 
-            <button>Create</button>
+            <button type="submit">
+                Create
+            </button>
 
         </form>
-
     );
 };
 

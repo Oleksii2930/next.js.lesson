@@ -1,17 +1,19 @@
-import {getAllCars} from "@/app/services/api.service";
-import Link from "next/link"
+import { getAllCars } from "@/app/services/api.service";
+import Link from "next/link";
+
 const CarsList = async () => {
-  const users =  await getAllCars()
+    const cars = await getAllCars();
 
     return (
         <div>
-            {
-                users.map((user) => <div key={user.id}>
-                <Link href={{pathname:'/'+ user.id.toString(),query:{data:JSON.stringify(user)} }}>{user.id} {user.brand}</Link>
+            {cars.map((car) => (
+                <div key={car.id}>
+                    <Link href={`/cars/${car.id}`}>
+                        {car.id} {car.brand}
+                    </Link>
                 </div>
-            )}
-            </div>
-
+            ))}
+        </div>
     );
 };
 
