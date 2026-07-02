@@ -11,7 +11,7 @@ const UsersLayout= ({children}: Props) => {
         <div>
             <hr/>
 
-            Users Layout {children}
+            Cars List Layout {children}
             <hr/>
         </div>
     );

@@ -9,9 +9,10 @@ const CarsPage = async () => {
 
             {cars.map(car => (
                 <div key={car.id}>
-                    ID: {car.id}
-                    <h3>{car.brand}</h3>
+
+                    {car.brand}
                     {car.price} $
+                    {car.year} year
                 </div>
             ))}
         </div>
